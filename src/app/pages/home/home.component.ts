@@ -51,4 +51,6 @@ export class HomeComponent {
       link: "#"
     },
   ]
+
+  type : string = "text"
 }

@@ -59,53 +59,33 @@
     <h2>Ipsum sed dolor</h2>
   </header>
   <div class="posts">
-    <article>
-      <a href="#" class="image"><img src="assets/images/" alt="" /></a>
-      <h3></h3>
-      <p></p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
-    <article>
-      <a href="#" class="image"><img src="assets/images/pic02.jpg" alt="" /></a>
-      <h3>Nulla amet dolore</h3>
-      <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
-    <article>
-      <a href="#" class="image"><img src="assets/images/pic03.jpg" alt="" /></a>
-      <h3>Tempus ullamcorper</h3>
-      <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
-    <article>
-      <a href="#" class="image"><img src="assets/images/pic04.jpg" alt="" /></a>
-      <h3>Sed etiam facilis</h3>
-      <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
-    <article>
-      <a href="#" class="image"><img src="assets/images/pic05.jpg" alt="" /></a>
-      <h3>Feugiat lorem aenean</h3>
-      <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
-    <article>
-      <a href="#" class="image"><img src="assets/images/pic06.jpg" alt="" /></a>
-      <h3>Amet varius aliquam</h3>
-      <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-      <ul class="actions">
-        <li><a href="#" class="button">More</a></li>
-      </ul>
-    </article>
+    <!-- ng-container est un conteneur qui n'est pas rendu dans le DOM -->
+    <!-- il est essentiellement utilisé pour palier aux besoins de cumul de directives -->
+    <ng-container *ngFor="let article of articles; let index">
+      <article *ngIf="article.imageSrc">
+        <a href="#" class="image"><img [src]="'assets/images/' + article.imageSrc" [alt]="article.imageAlt" /></a>
+        <h3>{{article.titre}}</h3>
+        <p>{{article.description}}</p>
+        <ul class="actions">
+          <li><a [href]="article.link" class="button">More</a></li>
+        </ul>
+      </article>
+    </ng-container>
+  </div>
+
+  <h3>Ng Switch : </h3>
+  <select [(ngModel)]="type">
+    <option value="text">Default</option>
+    <option value="text-plain">Text</option>
+    <option value="button-classic">Button</option>
+  </select>
+
+  <div>
+    <ng-container [ngSwitch]="type">
+      <input *ngSwitchCase="'text-plain'" type="text" class="align-center">
+      <input *ngSwitchCase="'button-classic'" type="button" class="button" value="Click Me">
+      <p *ngSwitchDefault>404 Not Found</p>
+    </ng-container>
   </div>
 </section>
+
