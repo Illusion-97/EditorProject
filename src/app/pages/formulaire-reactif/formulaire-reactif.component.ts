@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ArticleService} from "../../services/article.service";
 
 @Component({
   selector: 'app-formulaire-reactif',
@@ -14,6 +15,9 @@ export class FormulaireReactifComponent {
     description: new FormControl('', [Validators.required, Validators.minLength(30)]),
     link: new FormControl('', Validators.required),
   })
+
+  constructor(private service: ArticleService) {
+  }
 
   getControl(controlName: string) :FormControl | null{
     const control = this.form.get(controlName);
@@ -35,7 +39,7 @@ export class FormulaireReactifComponent {
       alert('Formulaire invalide');
       return;
     }
-
     alert(JSON.stringify(this.form.value))
+    this.service.addArticle(this.form.value)
   }
 }
