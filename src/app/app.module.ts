@@ -13,6 +13,9 @@ import { MiniPostComponent } from './components/sidebar/mini-post/mini-post.comp
 import { PostToLengthPipe } from './pipes/post-to-length.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { HomeComponent } from './pages/home/home.component';
+import { TextColorDirective } from './directives/text-color.directive';
+import { DuplicateDirective } from './directives/duplicate.directive';
+import { FormulaireComponent } from './pages/formulaire/formulaire.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HomeComponent } from './pages/home/home.component';
     MiniPostComponent,
     PostToLengthPipe,
     TruncatePipe,
-    HomeComponent
+    HomeComponent,
+    TextColorDirective,
+    DuplicateDirective,
+    FormulaireComponent
   ],
   imports: [
     BrowserModule,

@@ -26,14 +26,14 @@
       <span class="icon fa-gem"></span>
       <div class="content">
         <h3>Portitor ullamcorper</h3>
-        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+        <p [appTextColor]="'blue'">Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
       </div>
     </article>
     <article>
       <span class="icon solid fa-paper-plane"></span>
       <div class="content">
         <h3>Sapien veroeros</h3>
-        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+        <p *appDuplicate="'test'" [style.color]="'green'">Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
       </div>
     </article>
     <article>
