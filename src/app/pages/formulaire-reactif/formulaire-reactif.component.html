@@ -1,1 +1,20 @@
-<p>formulaire-reactif works!</p>
+<form (submit)="handleSubmit()" [formGroup]="form">
+  <label> Titre
+    <input [class.invalid]="isInvalid('titre')"  name="titre" type="text" formControlName="titre">
+    <p [style.color]="'red'" *ngIf="isInvalid('titre','required')">Le titre est invalide</p>
+  </label>
+  <label> Description
+    <input [class.invalid]="isInvalid('description')" formControlName="description" name="description" type="text">
+  </label>
+  <label> Image
+    <input name="src" type="text" formControlName="imageSrc">
+  </label>
+  <label> Texte Alternatif
+    <input  name="alt" type="text" formControlName="imageAlt">
+  </label>
+  <label> Lien
+    <input [class.invalid]="isInvalid('link')" name="link" type="text" formControlName="link">
+  </label>
+  <input type="submit" class="button" value="Ajouter" [disabled]="form.invalid">
+</form>
+
