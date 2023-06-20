@@ -1,0 +1,14 @@
+<article>
+  <a href="#" class="image"><img [src]="miniPostImpl.image" alt="" /></a>
+  <input type="text" [(ngModel)]="miniPostImpl.paragraph" (change)="miniPostImplChange.emit(miniPostImpl)"/>
+  <!--<input type="text" [(ngModel)]="paragraph" (change)="notifyParent(paragraph)"/>-->
+  <p>{{miniPostImpl.paragraph}}</p>
+  <p>Nombre de caractères : {{miniPostImpl.paragraph.length}}</p>
+  <p>Nombre de caractères : {{getLength(miniPostImpl.paragraph)}}</p>
+  <p>Nombre de caractères : {{getParagraphLength(miniPostImpl)}}</p>
+  <p>Nombre de caractères : {{miniPostImpl.paragraph | postToLength}}</p>
+  <p>Truncate : </p>
+  <p>{{miniPostImpl.paragraph | truncate:25:'***'}}</p>
+  <p>Truncate | postToLength : </p>
+  <p>{{miniPostImpl.paragraph | truncate:25:'***' | postToLength}}</p>
+</article>
