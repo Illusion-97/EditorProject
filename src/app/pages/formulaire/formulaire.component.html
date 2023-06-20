@@ -1,18 +1,21 @@
-<form (submit)="handleSubmit()">
+<form (submit)="handleSubmit(form)" #form>
   <label> Titre
-    <input [(ngModel)]="titre" type="text">
+    <input [class.invalid]="!inputTitre.checkValidity()" [(ngModel)]="titre" name="titre" type="text" required #inputTitre>
+    <p [style.color]="'red'" *ngIf="!inputTitre.checkValidity()">Le titre est invalide</p>
   </label>
   <label> Description
-    <input [(ngModel)]="description"  type="text">
+    <input [class.invalid]="!inputDesc.checkValidity()" [(ngModel)]="description" minlength="30" name="description" type="text" required #inputDesc>
+    <p [style.color]="'red'" *ngIf="!description">Le description est requise</p>
+    <p [style.color]="'red'" *ngIf="description.length < 30">Le titre est trop courte</p>
   </label>
   <label> Image
-    <input [(ngModel)]="imageSrc"  type="text">
+    <input [(ngModel)]="imageSrc" name="src" type="text">
   </label>
   <label> Texte Alternatif
-    <input [(ngModel)]="imageAlt"  type="text">
+    <input [(ngModel)]="imageAlt" name="alt" type="text">
   </label>
   <label> Lien
-    <input [(ngModel)]="link"  type="text">
+    <input [class.invalid]="!inputLink.checkValidity()" [(ngModel)]="link" name="link" type="text" required #inputLink>
   </label>
-  <input type="submit" class="button" value="Ajouter">
+  <input type="submit" class="button" value="Ajouter" [disabled]="!form.checkValidity()">
 </form>

@@ -1,0 +1,5 @@
+<label> Description
+  <input [class.invalid]="isInvalid()" [formControl]="formControlDescription" name="description" type="text">
+  <p [style.color]="'red'" *ngIf="isInvalid('required')">La description est requise</p>
+  <p [style.color]="'red'" *ngIf="isInvalid('minlength')">La description est trop courte</p>
+</label>

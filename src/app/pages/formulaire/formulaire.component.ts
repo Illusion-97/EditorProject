@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ArticleService} from "../../services/article.service";
+import {Article} from "../../models/article";
 
 @Component({
   selector: 'app-formulaire',
@@ -17,7 +18,20 @@ export class FormulaireComponent {
   constructor(private service: ArticleService) {
   }
 
-  handleSubmit() {
-    alert('submit')
+  handleSubmit(form: HTMLFormElement) {
+    if(!form.checkValidity()) {
+      alert('Formulaire invalide')
+      return;
+    }
+    const article : Article = {
+      description: this.description,
+      imageAlt: this.imageAlt,
+      imageSrc: this.imageSrc,
+      link: this.link,
+      titre: this.titre
+
+    }
+    alert(JSON.stringify(article))
+    this.service.addArticle(article);
   }
 }
