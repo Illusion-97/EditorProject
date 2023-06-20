@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import { MiniPostComponent } from './components/sidebar/mini-post/mini-post.component';
 import { PostToLengthPipe } from './pipes/post-to-length.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     SearchComponent,
     MiniPostComponent,
     PostToLengthPipe,
-    TruncatePipe
+    TruncatePipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
