@@ -21,6 +21,7 @@ import { FormulaireReactifComponent } from './pages/formulaire-reactif/formulair
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulaire-dossier.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulair
     FormulaireReactifComponent,
     LoginComponent,
     RegisterComponent,
-    FormulaireDossierComponent
+    FormulaireDossierComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
