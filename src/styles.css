@@ -2,3 +2,8 @@
 .invalid {
   border: 1px red solid;
 }
+
+.active {
+  text-decoration: underline;
+  color: #f56a6a !important;
+}

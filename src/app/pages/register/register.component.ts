@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {getControl, isInvalid} from "../../helpers/ReactiveFormsTools";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,11 @@ export class RegisterComponent {
     passwordChk: new FormControl('', Validators.required),
   }, this.matchingPasswords)
 
-  constructor(private service: AuthService) {
+  constructor(private service: AuthService, private route: ActivatedRoute) {
+    this.form.patchValue({
+      id: Number(route.snapshot.paramMap.get("id")) || 0
+    })
+    // this.form.setValue({}) Attention set value doit être utilisé avec un objet ayant EXACTEMENT la même structure
   }
 
   isInvalid(controlName: string ,field?: string) {

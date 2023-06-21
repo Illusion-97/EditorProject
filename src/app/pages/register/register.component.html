@@ -2,6 +2,13 @@
   <label> Pseudo :
     <input [class.invalid]="isInvalid('username')"  name="username" type="text" formControlName="username">
   </label>
+  <label *ngIf="form.value.id > 0"> Role :
+    <select formControlName="role">
+      <option value="BASIC">Basic</option>
+      <option value="REDACTOR">Rédacteur</option>
+      <option value="ADMIN">Administrateur</option>
+    </select>
+  </label>
   <label> Email :
     <input [class.invalid]="isInvalid('email')"  name="email" type="email" formControlName="email">
   </label>

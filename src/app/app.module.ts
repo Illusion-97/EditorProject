@@ -22,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulaire-dossier.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { FormulairesListComponent } from './pages/formulaires-list/formulaires-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     LoginComponent,
     RegisterComponent,
     FormulaireDossierComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FormulairesListComponent
   ],
   imports: [
     BrowserModule,
