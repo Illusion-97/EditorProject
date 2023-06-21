@@ -1,8 +1,6 @@
 <form (submit)="handleSubmit()" [formGroup]="form">
   <label> Email
     <input [class.invalid]="isInvalid('email')"  name="email" type="email" formControlName="email">
-    <ng-container *ngIf="getControl('email')?.errors; let errors">
-    </ng-container>
   </label>
   <label> Mot de passe :
     <input [class.invalid]="isInvalid('password')" name="password" type="password" formControlName="password">

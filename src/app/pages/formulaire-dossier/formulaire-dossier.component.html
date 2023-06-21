@@ -1,0 +1,28 @@
+<form (submit)="handleSubmit()" [formGroup]="dossierForm">
+  <label> Nom du dossier :
+    <input type="text" formControlName="name">
+  </label>
+  <label> Tags :
+    <select formControlName="tag" multiple>
+      <option value="IMG">Images</option>
+      <option value="VID">Videos</option>
+      <option value="MUS">Musique</option>
+      <option value="DOC">Documents</option>
+    </select>
+  </label>
+
+  <div>
+    <label>Propriétaire :</label>
+    <label> Pseudo :
+      <input [class.invalid]="isInvalid( userForm ,'username')"
+             name="username" type="text" [formControl]="getControl(userForm, 'username')!">
+    </label>
+  </div>
+
+  <div>
+    <label>Fichiers :</label>
+    <input type="file" *ngFor="let control of filesArray.controls" [formControl]="castControl(control)">
+    <button type="button" (click)="addFileControl()"> Ajouter un fichier </button>
+  </div>
+  <button type="submit">Sauver</button>
+</form>

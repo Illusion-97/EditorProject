@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ArticleService} from "../../services/article.service";
 import {AuthService} from "../../services/auth.service";
+import {isInvalid} from "../../helpers/ReactiveFormsTools";
 
 @Component({
   selector: 'app-login',
@@ -17,18 +17,8 @@ export class LoginComponent {
   constructor(private service: AuthService) {
   }
 
-  getControl(controlName: string) :FormControl | null{
-    const control = this.form.get(controlName);
-    return control ? <FormControl>control : null;
-  }
-
   isInvalid(controlName: string ,field?: string) {
-    const control = this.getControl(controlName);
-    return control ? control.dirty && (
-      field
-        ? control.hasError(field)
-        : control.invalid
-    ) : false
+    return isInvalid(this.form,controlName,field)
   }
 
   handleSubmit() {

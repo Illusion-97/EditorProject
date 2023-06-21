@@ -20,6 +20,7 @@ import { FormControlComponent } from './components/form-control/form-control.com
 import { FormulaireReactifComponent } from './pages/formulaire-reactif/formulaire-reactif.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulaire-dossier.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RegisterComponent } from './pages/register/register.component';
     FormControlComponent,
     FormulaireReactifComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FormulaireDossierComponent
   ],
   imports: [
     BrowserModule,

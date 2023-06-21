@@ -18,5 +18,6 @@ export class AuthService {
 
   register(user: User) {
 
+    alert(JSON.stringify(user))
   }
 }

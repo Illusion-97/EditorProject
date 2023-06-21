@@ -1,1 +1,19 @@
-<p>register works!</p>
+<form (submit)="handleSubmit()" [formGroup]="form">
+  <label> Pseudo :
+    <input [class.invalid]="isInvalid('username')"  name="username" type="text" formControlName="username">
+  </label>
+  <label> Email :
+    <input [class.invalid]="isInvalid('email')"  name="email" type="email" formControlName="email">
+  </label>
+  <label> Mot de passe :
+    <input [class.invalid]="isInvalid('password')" name="password" type="password" formControlName="password">
+    <p [style.color]="'red'" *ngIf="isInvalid('password','required')">Mot de passe requis</p>
+    <p [style.color]="'red'" *ngIf="form.getError('password')">Mot de passe ne correspondent pas</p>
+  </label>
+  <label> Confirmation du mot de passe :
+    <input [class.invalid]="isInvalid('passwordChk')" name="passwordChk" type="password" formControlName="passwordChk">
+    <p [style.color]="'red'" *ngIf="isInvalid('password','required')">Mot de passe requis</p>
+    <p [style.color]="'red'" *ngIf="form.getError('password')">Mot de passe ne correspondent pas</p>
+  </label>
+  <input type="submit" class="button" value="Ajouter" [disabled]="form.invalid">
+</form>
