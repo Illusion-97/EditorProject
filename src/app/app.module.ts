@@ -18,6 +18,8 @@ import { DuplicateDirective } from './directives/duplicate.directive';
 import { FormulaireComponent } from './pages/formulaire/formulaire.component';
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { FormulaireReactifComponent } from './pages/formulaire-reactif/formulaire-reactif.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { FormulaireReactifComponent } from './pages/formulaire-reactif/formulair
     DuplicateDirective,
     FormulaireComponent,
     FormControlComponent,
-    FormulaireReactifComponent
+    FormulaireReactifComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<form (submit)="handleSubmit()" [formGroup]="form">
+  <label> Email
+    <input [class.invalid]="isInvalid('email')"  name="email" type="email" formControlName="email">
+    <ng-container *ngIf="getControl('email')?.errors; let errors">
+    </ng-container>
+  </label>
+  <label> Mot de passe :
+    <input [class.invalid]="isInvalid('password')" name="password" type="password" formControlName="password">
+    <p [style.color]="'red'" *ngIf="isInvalid('password','required')">Mot de passe requis</p>
+  </label>
+  <input type="submit" class="button" value="Ajouter" [disabled]="form.invalid">
+</form>

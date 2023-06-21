@@ -2,6 +2,7 @@
   <label> Titre
     <input [class.invalid]="isInvalid('titre')"  name="titre" type="text" formControlName="titre">
     <p [style.color]="'red'" *ngIf="isInvalid('titre','required')">Le titre est invalide</p>
+    <p [style.color]="'red'" *ngIf="isInvalid('titre','Filter')">Le titre contiens 'example'</p>
   </label>
   <label> Description
     <input [class.invalid]="isInvalid('description')" formControlName="description" name="description" type="text">

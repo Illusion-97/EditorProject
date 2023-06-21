@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ArticleService} from "../../services/article.service";
-import {filter} from "../../helpers/validateurs/filter";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-formulaire-reactif',
-  templateUrl: './formulaire-reactif.component.html',
-  styleUrls: ['./formulaire-reactif.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class FormulaireReactifComponent {
+export class LoginComponent {
   form: FormGroup = new FormGroup<any>({
-    imageSrc: new FormControl(''),
-    imageAlt: new FormControl(''),
-    titre: new FormControl('', [Validators.required, filter('TryMeh')]),
-    description: new FormControl('', [Validators.required, Validators.minLength(30)]),
-    link: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required,Validators.email]),
+    password: new FormControl('', Validators.required),
   })
 
-  constructor(private service: ArticleService) {
+  constructor(private service: AuthService) {
   }
 
   getControl(controlName: string) :FormControl | null{
@@ -41,6 +38,8 @@ export class FormulaireReactifComponent {
       return;
     }
     alert(JSON.stringify(this.form.value))
-    this.service.addArticle(this.form.value)
+    const {email,password} = this.form.value
+    this.service.login(email,password)
   }
+
 }
