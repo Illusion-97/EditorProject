@@ -30,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})], // Ramène le scroll en haut de page à la navigation
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
