@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {getControl, isInvalid} from "../../helpers/ReactiveFormsTools";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -15,11 +15,11 @@ export class RegisterComponent {
     username: new FormControl('', Validators.required),
     role: new FormControl('BASIC'),
     email: new FormControl('', [Validators.required,Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
     passwordChk: new FormControl('', Validators.required),
   }, this.matchingPasswords)
 
-  constructor(private service: AuthService, private route: ActivatedRoute) {
+  constructor(private service: AuthService,private router : Router, private route: ActivatedRoute) {
     this.form.patchValue({
       id: Number(route.snapshot.paramMap.get("id")) || 0
     })
@@ -36,7 +36,11 @@ export class RegisterComponent {
       alert('Formulaire invalide');
       return;
     }
-    this.service.register(this.form.value)
+    this.service.register(this.form.value).subscribe({
+      next: () => {
+        this.router.navigate(['/login']).then()
+      }
+    })
   }
 
   matchingPasswords(control: AbstractControl) : ValidationErrors | null {

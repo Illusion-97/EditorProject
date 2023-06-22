@@ -5,3 +5,8 @@ export interface User {
   password: string
   role: string
 }
+
+export interface UserResponse {
+  accessToken: string;
+  user : User
+}

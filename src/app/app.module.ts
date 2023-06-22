@@ -23,6 +23,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulaire-dossier.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FormulairesListComponent } from './pages/formulaires-list/formulaires-list.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FormulairesListComponent } from './pages/formulaires-list/formulaires-l
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent] // Composants devant être chargés au démarrage (nécessaires pour le fichier index.html)

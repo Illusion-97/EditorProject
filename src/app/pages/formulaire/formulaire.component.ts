@@ -24,6 +24,7 @@ export class FormulaireComponent {
       return;
     }
     const article : Article = {
+      id: 0,
       description: this.description,
       imageAlt: this.imageAlt,
       imageSrc: this.imageSrc,
@@ -32,6 +33,6 @@ export class FormulaireComponent {
 
     }
     alert(JSON.stringify(article))
-    this.service.addArticle(article);
+    //this.service.addArticle(article);
   }
 }

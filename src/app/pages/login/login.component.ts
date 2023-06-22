@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {isInvalid} from "../../helpers/ReactiveFormsTools";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   })
 
-  constructor(private service: AuthService) {
+  constructor(private service: AuthService, private router: Router) {
   }
 
   isInvalid(controlName: string ,field?: string) {
@@ -27,9 +28,10 @@ export class LoginComponent {
       alert('Formulaire invalide');
       return;
     }
-    alert(JSON.stringify(this.form.value))
     const {email,password} = this.form.value
-    this.service.login(email,password)
+    this.service.login(email,password).subscribe({
+      next: () => this.router.navigate(['/home'])
+    })
   }
 
 }

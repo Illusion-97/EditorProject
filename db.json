@@ -1,0 +1,38 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "imageSrc": "pic01.jpg",
+      "imageAlt": "",
+      "titre": "Titre Anterieur",
+      "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.",
+      "link": "Lost Link"
+    },
+    {
+      "id": 2,
+      "imageSrc": "pic01.jpg",
+      "imageAlt": "",
+      "titre": "Titre ",
+      "description": "Descriptaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "link": "Lost"
+    },
+    {
+      "id": 3,
+      "imageSrc": "pic01.jpg",
+      "imageAlt": "Halte !",
+      "titre": "Titre Anterieur",
+      "description": "Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.",
+      "link": "Lost Link"
+    }
+  ],
+  "users": [
+    {
+      "email": "yadekalom@jehann.fr",
+      "password": "$2a$10$rdSPDpAaqhjQCpuLPXwmQugfJdmAgIHK2w56UdFpKgdvWAJU4o.fW",
+      "id": 1,
+      "username": "Yanis",
+      "role": "BASIC",
+      "passwordChk": "TryMeh"
+    }
+  ]
+}

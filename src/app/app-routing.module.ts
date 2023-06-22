@@ -18,7 +18,10 @@ const routes: Routes = [
   {path: 'forms', component: FormulairesListComponent, children: [
       {path: 'module', component: FormulaireComponent},
       {path: 'control', component: FormControlComponent},
-      {path: 'reactive', component: FormulaireReactifComponent},
+      {path: 'reactive', children:[
+          {path: "", component: FormulaireReactifComponent},
+          {path: ":id", component: FormulaireReactifComponent}
+        ]},
       {path: 'dossier', component: FormulaireDossierComponent},
       {path: '**', redirectTo: 'module'}
     ]},

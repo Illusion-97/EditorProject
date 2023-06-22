@@ -61,13 +61,17 @@
   <div class="posts">
     <!-- ng-container est un conteneur qui n'est pas rendu dans le DOM -->
     <!-- il est essentiellement utilisé pour palier aux besoins de cumul de directives -->
-    <ng-container *ngFor="let article of articles; let index">
+    <!-- En cas de récupération / utilisation d'une donnée récupérée via un observable
+         la syntaxe "observable | async" gère la souscription et utilisera la réponse (le next) pour les traitements
+     -->
+    <ng-container *ngFor="let article of articlesObs | async; let index">
       <article *ngIf="article.imageSrc">
         <a href="#" class="image"><img [src]="'assets/images/' + article.imageSrc" [alt]="article.imageAlt" /></a>
         <h3>{{article.titre}}</h3>
         <p>{{article.description}}</p>
         <ul class="actions">
           <li><a [href]="article.link" class="button">More</a></li>
+          <li><a routerLink="/forms/reactive/{{article.id}}" class="button">Edit</a></li>
         </ul>
       </article>
     </ng-container>

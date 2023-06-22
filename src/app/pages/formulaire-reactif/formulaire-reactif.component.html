@@ -16,6 +16,7 @@
   <label> Lien
     <input [class.invalid]="isInvalid('link')" name="link" type="text" formControlName="link">
   </label>
-  <input type="submit" class="button" value="Ajouter" [disabled]="form.invalid">
+  <input type="submit" class="button" [value]=" form.value.id === 0 ? 'Ajouter' : 'Modifier'" [disabled]="form.invalid">
+  <button type="button" (click)="delete()" *ngIf="form.value.id > 0">Supprimer</button>
 </form>
 
