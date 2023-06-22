@@ -30,7 +30,8 @@ export class LoginComponent {
     }
     const {email,password} = this.form.value
     this.service.login(email,password).subscribe({
-      next: () => this.router.navigate(['/home'])
+      next: username => this.router.navigate(['/home'])
+        .then(() => alert('Welcome ' + username) )
     })
   }
 
