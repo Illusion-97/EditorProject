@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {isInvalid} from "../../helpers/ReactiveFormsTools";
-import {Router} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   })
 
-  constructor(private service: AuthService, private router: Router) {
+  constructor(private service: AuthService, private router: Router,private route: ActivatedRoute) {
   }
 
   isInvalid(controlName: string ,field?: string) {
@@ -30,8 +30,8 @@ export class LoginComponent {
     }
     const {email,password} = this.form.value
     this.service.login(email,password).subscribe({
-      next: username => this.router.navigate(['/home'])
-        .then(() => alert('Welcome ' + username) )
+      next: username => this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/home'])
+        .then(() => alert('Welcome ' + username))
     })
   }
 

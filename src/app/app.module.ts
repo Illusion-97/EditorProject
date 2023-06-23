@@ -23,7 +23,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FormulaireDossierComponent } from './pages/formulaire-dossier/formulaire-dossier.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { FormulairesListComponent } from './pages/formulaires-list/formulaires-list.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {TokenInterceptor} from "./helpers/interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // Si votre intercepteur n'est pas automatiquement ajouté :
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent] // Composants devant être chargés au démarrage (nécessaires pour le fichier index.html)
 })
 export class AppModule { }

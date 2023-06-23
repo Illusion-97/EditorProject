@@ -9,13 +9,16 @@ import {FormulaireComponent} from "./pages/formulaire/formulaire.component";
 import {FormControlComponent} from "./components/form-control/form-control.component";
 import {FormulaireReactifComponent} from "./pages/formulaire-reactif/formulaire-reactif.component";
 import {FormulaireDossierComponent} from "./pages/formulaire-dossier/formulaire-dossier.component";
+import {LoggedGuard} from "./helpers/guards/logged.guard";
+import {IsRedactorGuard} from "./helpers/guards/is-redactor.guard";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [LoggedGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'login/:returnUrl', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'register/:id', component: RegisterComponent},
-  {path: 'forms', component: FormulairesListComponent, children: [
+  {path: 'forms', component: FormulairesListComponent, canActivate: [LoggedGuard,IsRedactorGuard], children: [
       {path: 'module', component: FormulaireComponent},
       {path: 'control', component: FormControlComponent},
       {path: 'reactive', children:[
