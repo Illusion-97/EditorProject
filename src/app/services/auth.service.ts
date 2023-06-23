@@ -14,7 +14,10 @@ export class AuthService {
   private $currentUser: BehaviorSubject<UserResponse | undefined> = new BehaviorSubject<UserResponse | undefined>(undefined)
   currentUser: Observable<UserResponse | undefined> = this.$currentUser.asObservable()
     .pipe(tap(currentUser => this.saveCurrentUser(currentUser)))
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const sessionUser = sessionStorage.getItem("CURRENT_USER")
+    if (sessionUser) this.$currentUser.next(JSON.parse(sessionUser));
+  }
 
   login(email: string, password: string): Observable<string> {
     return this.http.post<UserResponse>(`${this.URL}login`,{email, password})
@@ -39,5 +42,9 @@ export class AuthService {
 
   register(user: User): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${this.URL}register`,user)
+  }
+
+  getToken() {
+    return
   }
 }
