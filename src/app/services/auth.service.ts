@@ -44,7 +44,15 @@ export class AuthService {
     return this.http.post<UserResponse>(`${this.URL}register`,user)
   }
 
-  getToken() {
-    return
+  getToken(): string | undefined {
+    return this.$currentUser.value?.accessToken
+  }
+
+  getRole(): string | undefined {
+    return this.$currentUser.value?.user.role
+  }
+
+  isLogged(): boolean {
+    return !!this.$currentUser.value
   }
 }
